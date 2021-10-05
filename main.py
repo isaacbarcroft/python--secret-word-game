@@ -9,6 +9,7 @@ def hangman(word):
     print()
     print('H A N G M A N')
     full_word = '_ ' * len(word)
+    print(len(full_word))
     guesses = 7
     guessed = False
     words_guess=[]
@@ -35,9 +36,11 @@ def hangman(word):
                 print(guess, 'is in the word')
                 words_guess.append(guess)
                 word_list = list(full_word)
-                indices = [i for i, letter in enumerate(word) if letter == guess]
+                indices = [i for i, letter in enumerate(' '.join(word)) if letter == guess]
+
                 for index in indices:
                     word_list[index] = guess
+                    print(indices)
                 full_word = "".join(word_list)
                 print(full_word)
 
