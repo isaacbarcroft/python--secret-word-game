@@ -1,5 +1,5 @@
 import random
-
+import re
 
 wrong_guess=''
 correct_guess=''
@@ -15,9 +15,11 @@ def hangman(word):
     words_guess=[]
     print('Guesses Left', guesses)
     print(full_word)
+    
     print()
     while not guessed and guesses > 0:
         print()
+        print(full_word.replace(' ', ''))
         guess = input('Enter a letter    ')
         if guess.isalpha() and len(guess) == 1:
             if guess in words_guess:
@@ -43,10 +45,6 @@ def hangman(word):
                     print(indices)
                 full_word = "".join(word_list)
                 print(full_word)
-
-            if full_word == word:
-                print("You Win")
-                guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in words_guess:
                 print("You already guessed the word", guess)
@@ -59,8 +57,11 @@ def hangman(word):
                 full_word = word
         else: 
             print('TRY AGAIN')
+        if full_word.replace(' ', '') == word:
+            print(full_word.replace(' ',''))
+            guessed = True
     if guessed == True:
-        print('You guessed the word!')
+        print('YOU ROCK!')
 
 hangman(word)
 
